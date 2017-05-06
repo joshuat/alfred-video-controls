@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>co.joshuaturner.alfred.videocontrols</string>
+	<key>category</key>
+	<string>Productivity</string>
+	<key>connections</key>
+	<dict>
+		<key>018BBE1D-F229-4E9A-B10A-8C15F2091A17</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>51A666A2-F74D-44F8-AD73-DFD9F3BAC718</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>06850930-4C07-447E-AE10-08051871E1B6</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>BD21A9FA-8D8E-414A-84E2-99BE6F3F1FE5</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>51A666A2-F74D-44F8-AD73-DFD9F3BAC718</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>BD21A9FA-8D8E-414A-84E2-99BE6F3F1FE5</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>6E4EEBD5-0AB8-4986-8EC0-1CD707F41689</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>E01A971C-4713-4542-A5E5-3B9279FC1B33</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>9BD52D80-13AD-492C-9A4E-1FF2F4F501B3</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>06850930-4C07-447E-AE10-08051871E1B6</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>BD21A9FA-8D8E-414A-84E2-99BE6F3F1FE5</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>F96CB837-4F11-4F31-98CF-211BF786FF05</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>E01A971C-4713-4542-A5E5-3B9279FC1B33</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>BD21A9FA-8D8E-414A-84E2-99BE6F3F1FE5</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Joshua Turner</string>
+	<key>description</key>
+	<string>Enable Picture in Picture, Fullscreen, and Airplay on any HTML5 video in Safari</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Video Controls</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>pip</string>
+				<key>subtext</key>
+				<string>Enter Picture in Picture in Safari if a video is playing in the foreground.</string>
+				<key>text</key>
+				<string>Enter Picture in Picture</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>6E4EEBD5-0AB8-4986-8EC0-1CD707F41689</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string></string>
+				<key>variables</key>
+				<dict>
+					<key>code</key>
+					<string>javascript:document.querySelector('video').webkitSetPresentationMode('picture-in-picture');</string>
+					<key>name</key>
+					<string>Picture in Picture</string>
+					<key>type</key>
+					<string>pip</string>
+				</dict>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>E01A971C-4713-4542-A5E5-3B9279FC1B33</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>script</key>
+				<string>ObjC.import('stdlib')
+
+var code = $.getenv('code')
+var name = $.getenv('name')
+
+var frontmostAppName = Application('System Events').applicationProcesses.where({ frontmost: true }).name()[0]
+var frontmostApp = Application(frontmostAppName)
+
+if (['Safari', 'Safari Technology Preview'].indexOf(frontmostAppName) &gt; -1) {
+  frontmostApp.includeStandardAdditions = true
+
+  try {
+    availableVideo = frontmostApp.doJavaScript("document.querySelectorAll('video').length;", { in: frontmostApp.documents[0] })
+
+    if (availableVideo) {
+      frontmostApp.doJavaScript(code, { in: frontmostApp.documents[0] })
+      stdout = undefined
+    } else {
+      stdout = "No HTML5 videos were found in the focused tab of Safari."
+    }
+    
+  } catch(err) {
+    stdout = "You need to enable 'Allow JavaScript from Apple Events' in the Safari Develop menu. The Develop menu can be enabled in Safari's Preferences &gt; Advanced tab."
+  }
+
+} else {
+  stdout = "Safari needs to be the focused app to trigger " + name + "." 
+}</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>7</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>BD21A9FA-8D8E-414A-84E2-99BE6F3F1FE5</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>fullscreen</string>
+				<key>subtext</key>
+				<string>Enter Fullscreen in Safari if a video is playing in the foreground.</string>
+				<key>text</key>
+				<string>Enter Fullscreen</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>9BD52D80-13AD-492C-9A4E-1FF2F4F501B3</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<true/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>{query}</string>
+				<key>title</key>
+				<string>{var:name}</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>F96CB837-4F11-4F31-98CF-211BF786FF05</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string></string>
+				<key>variables</key>
+				<dict>
+					<key>code</key>
+					<string>javascript:document.querySelector('video').webkitRequestFullscreen();</string>
+					<key>name</key>
+					<string>Fullscreen</string>
+					<key>type</key>
+					<string>fullscreen</string>
+				</dict>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>06850930-4C07-447E-AE10-08051871E1B6</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>keyword</key>
+				<string>airplay</string>
+				<key>subtext</key>
+				<string>Show Airplay Menu in Safari if a video is playing in the foreground.</string>
+				<key>text</key>
+				<string>Show Airplay Menu</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>018BBE1D-F229-4E9A-B10A-8C15F2091A17</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string></string>
+				<key>variables</key>
+				<dict>
+					<key>code</key>
+					<string>javascript:document.querySelector('video').webkitShowPlaybackTargetPicker();</string>
+					<key>name</key>
+					<string>Airplay</string>
+					<key>type</key>
+					<string>airplay</string>
+				</dict>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>51A666A2-F74D-44F8-AD73-DFD9F3BAC718</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>018BBE1D-F229-4E9A-B10A-8C15F2091A17</key>
+		<dict>
+			<key>xpos</key>
+			<integer>100</integer>
+			<key>ypos</key>
+			<integer>310</integer>
+		</dict>
+		<key>06850930-4C07-447E-AE10-08051871E1B6</key>
+		<dict>
+			<key>xpos</key>
+			<integer>290</integer>
+			<key>ypos</key>
+			<integer>230</integer>
+		</dict>
+		<key>51A666A2-F74D-44F8-AD73-DFD9F3BAC718</key>
+		<dict>
+			<key>xpos</key>
+			<integer>290</integer>
+			<key>ypos</key>
+			<integer>340</integer>
+		</dict>
+		<key>6E4EEBD5-0AB8-4986-8EC0-1CD707F41689</key>
+		<dict>
+			<key>xpos</key>
+			<integer>100</integer>
+			<key>ypos</key>
+			<integer>90</integer>
+		</dict>
+		<key>9BD52D80-13AD-492C-9A4E-1FF2F4F501B3</key>
+		<dict>
+			<key>xpos</key>
+			<integer>100</integer>
+			<key>ypos</key>
+			<integer>200</integer>
+		</dict>
+		<key>BD21A9FA-8D8E-414A-84E2-99BE6F3F1FE5</key>
+		<dict>
+			<key>xpos</key>
+			<integer>420</integer>
+			<key>ypos</key>
+			<integer>200</integer>
+		</dict>
+		<key>E01A971C-4713-4542-A5E5-3B9279FC1B33</key>
+		<dict>
+			<key>xpos</key>
+			<integer>290</integer>
+			<key>ypos</key>
+			<integer>120</integer>
+		</dict>
+		<key>F96CB837-4F11-4F31-98CF-211BF786FF05</key>
+		<dict>
+			<key>xpos</key>
+			<integer>610</integer>
+			<key>ypos</key>
+			<integer>200</integer>
+		</dict>
+	</dict>
+	<key>version</key>
+	<string></string>
+	<key>webaddress</key>
+	<string></string>
+</dict>
+</plist>
