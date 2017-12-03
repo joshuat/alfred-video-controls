@@ -176,6 +176,7 @@ if (['Safari', 'Safari Technology Preview'].indexOf(frontmostAppName) &gt; -1) {
     availableVideo = frontmostApp.doJavaScript("document.querySelectorAll('video').length;", { in: frontmostApp.documents[0] })
 
     if (availableVideo) {
+			frontmostApp.doJavaScript("var videoArray = Array.from(document.querySelectorAll('video')).map(function (video) { return video.clientHeight; }); var videoPosition = videoArray.indexOf(Math.max(...videoArray)); var selectedVideoElement = document.querySelectorAll('video')[videoPosition];", { in: frontmostApp.documents[0] })
       frontmostApp.doJavaScript(code, { in: frontmostApp.documents[0] })
       stdout = undefined
     } else {
